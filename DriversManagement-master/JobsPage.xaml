@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  xmlns:local="clr-namespace:DriversManagement"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DriversManagement.PaginaJobe"
+             Title="Drivers Tasks">
+    
+    <StackLayout Margin="20">
+        <Editor Placeholder="Driver: task 1, task 2" Text="{Binding Description}"  HeightRequest="50" >
+            <Editor.Behaviors>
+                <local:Validate />
+            </Editor.Behaviors>
+        </Editor>
+        <Picker x:Name="AlegeDriver" Title="Add the name of the driver "/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="Save" Clicked="OnSaveButtonClicked" />
+            <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
+        </Grid>
+        <ListView x:Name="VizualizareaJobe" Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Description}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Add Predifined Job" MaximumWidthRequest="300" 
+                Clicked="OnChooseButtonClicked"/>
+    </StackLayout>
+</ContentPage>
